@@ -21,4 +21,8 @@
     font-size: 32px;
     margin-bottom: 20px;
     }
+
+    .mat-mdc-unelevated-button{
+        height: 55px;
+    }
 }
