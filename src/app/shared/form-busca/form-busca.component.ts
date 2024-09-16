@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-form-busca',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './form-busca.component.css'
 })
 export class FormBuscaComponent {
+  readonly dialog = inject(MatDialog);
 
+  openDialog() {
+    this.dialog.open(ModalComponent);
+  }
 }
