@@ -1,8 +1,8 @@
 <app-card variant="secondary" class="form-busca">
-    <form>
+    <form [formGroup]="serviceForm.formulario">
         <h2>Passagens</h2>
         <div class="flex-container">
-            <mat-button-toggle-group aria-label="Tipo de passagem">
+            <mat-button-toggle-group aria-label="Tipo de passagem" formControlName="somenteIda">
               <mat-button-toggle>IDA E VOLTA</mat-button-toggle>
               <mat-button-toggle>SOMENTE IDA</mat-button-toggle>
             </mat-button-toggle-group>
@@ -12,21 +12,11 @@
             </mat-chip-listbox>
         </div>
         <div class="flex-container">
-            <mat-form-field class="input-container" appearance="outline">
-                <mat-label>Origem</mat-label>
-                <mat-icon matPrefix>flight_takeoff</mat-icon>
-                <input matInput placeholder="Origem">
-                <mat-icon matSuffix>search</mat-icon>
-            </mat-form-field>
+            <app-dropdown-uf></app-dropdown-uf>
             <button mat-icon-button>
                 <mat-icon>sync_alt</mat-icon>
             </button>
-            <mat-form-field class="input-container" appearance="outline">
-                <mat-label>Destino</mat-label>
-                <mat-icon matPrefix>flight_land</mat-icon>
-                <input matInput placeholder="Destino">
-                <mat-icon matSuffix>search</mat-icon>
-            </mat-form-field>
+            <app-dropdown-uf></app-dropdown-uf>
             <mat-form-field class="input-container" appearance="outline">
                 <mat-label>Data de ida</mat-label>
                 <input matInput [matDatepicker]="ida" placeholder="Data de ida"/>
