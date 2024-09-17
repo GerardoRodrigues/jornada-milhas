@@ -1,6 +1,16 @@
 <mat-form-field class="input-container" appearance="outline">
   <mat-label>{{ label }}</mat-label>
   <mat-icon matPrefix>{{ matPrefix }}</mat-icon>
-  <input matInput [placeholder]="placeholder" />
+  <input matInput [matAutocomplete]="auto"
+    placeholder="Origem"
+    [formControl]="control"
+    [name]="label"
+    ngDefaultControl
+  />
   <mat-icon matSuffix>search</mat-icon>
+  <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+      <mat-option *ngFor="let estado of filteredOptions$ | async" [value]="estado.nome">
+        {{estado.nome}}
+      </mat-option>
+  </mat-autocomplete>
 </mat-form-field>

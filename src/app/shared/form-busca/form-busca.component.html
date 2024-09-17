@@ -12,21 +12,21 @@
             </mat-chip-listbox>
         </div>
         <div class="flex-container">
-            <app-dropdown-uf></app-dropdown-uf>
+            <app-dropdown-uf label="Origem" matPrefix="flight_takeoff" [control]="serviceForm.obterControle('origem')"></app-dropdown-uf>
             <button mat-icon-button>
                 <mat-icon>sync_alt</mat-icon>
             </button>
-            <app-dropdown-uf></app-dropdown-uf>
+            <app-dropdown-uf label="Destino" matPrefix="flight_land" [control]="serviceForm.obterControle('destino')"></app-dropdown-uf>
             <mat-form-field class="input-container" appearance="outline">
                 <mat-label>Data de ida</mat-label>
-                <input matInput [matDatepicker]="ida" placeholder="Data de ida"/>
+                <input matInput [matDatepicker]="ida"/>
                 <mat-datepicker-toggle matIconSuffix [for]="ida"></mat-datepicker-toggle>
                 <mat-datepicker #ida>
                 </mat-datepicker>
               </mat-form-field>
               <mat-form-field class="input-container" appearance="outline">
                 <mat-label>Data de volta</mat-label>
-                <input matInput [matDatepicker]="volta" placeholder="Data de volta"/>
+                <input matInput [matDatepicker]="volta"/>
                 <mat-datepicker-toggle matIconSuffix [for]="volta"></mat-datepicker-toggle>
                 <mat-datepicker #volta>
                 </mat-datepicker>

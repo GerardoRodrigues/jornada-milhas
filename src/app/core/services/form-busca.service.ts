@@ -11,6 +11,16 @@ export class FormBuscaService {
   constructor() {
     this.formulario = new FormGroup({
       somenteIda: new FormControl(false),
+      origem: new FormControl(),
+      destino: new FormControl()
     })
    }
+
+   obterControle(nome:string): FormControl {
+    const control = this.formulario.get(nome);
+    if (!control) {
+      throw new Error(`FormControl com nome "${nome}" não existe.`);
+    }
+    return control as FormControl;
+  }
 }
