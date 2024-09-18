@@ -1,10 +1,10 @@
 <app-card variant="secondary" class="form-busca">
-    <form [formGroup]="serviceForm.formulario">
+    <form [formGroup]="serviceForm.formulario" (ngSubmit)="buscar()">
         <h2>Passagens</h2>
         <div class="flex-container">
             <mat-button-toggle-group aria-label="Tipo de passagem" formControlName="somenteIda">
-              <mat-button-toggle>IDA E VOLTA</mat-button-toggle>
-              <mat-button-toggle>SOMENTE IDA</mat-button-toggle>
+              <mat-button-toggle [value]="false">IDA E VOLTA</mat-button-toggle>
+              <mat-button-toggle [value]="true">SOMENTE IDA</mat-button-toggle>
             </mat-button-toggle-group>
             <mat-chip (click)="serviceForm.openDialog()">
                 <div class="inner">

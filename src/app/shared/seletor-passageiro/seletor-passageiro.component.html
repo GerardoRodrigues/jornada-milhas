@@ -1,0 +1,11 @@
+<ul>
+  <li>
+    <strong>{{ passageiro }}</strong>
+  </li>
+  <li>{{ descricaoIdade }}</li>
+  <li>
+    <app-botao-controle operacao="decremento" (click)="decrementar()"></app-botao-controle>
+    <span>{{value}}</span>
+    <app-botao-controle operacao="incremento" (click)="incrementar()"></app-botao-controle>
+  </li>
+</ul>

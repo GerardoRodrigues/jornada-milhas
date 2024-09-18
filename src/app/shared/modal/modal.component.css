@@ -12,11 +12,6 @@
     .selecao-idade{
         display: flex;
         justify-content: space-between;
-
-        span{
-             vertical-align: middle;
-            padding: 0 12px;
-        }
     }
 }
 

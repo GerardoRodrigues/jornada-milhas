@@ -10,4 +10,7 @@ export class FormBuscaComponent {
 
   constructor(protected serviceForm: FormBuscaService){}
 
+  buscar(){
+    console.log(this.serviceForm.formulario.value)
+  }
 }

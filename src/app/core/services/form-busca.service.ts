@@ -65,7 +65,6 @@ export class FormBuscaService {
         tipo
       })
     }
-    console.log(tipo)
   }
 
   openDialog() {
