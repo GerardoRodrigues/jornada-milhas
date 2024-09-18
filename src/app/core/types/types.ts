@@ -17,3 +17,8 @@ export interface Depoimento{
     autor: string
     avatar: string
 }
+
+export interface Login{
+    email: string
+    senha: string
+}
