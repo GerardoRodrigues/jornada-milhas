@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PromocaoService } from '../../core/services/promocao.service';
-import { Promocao } from '../../core/types/types';
+import { Depoimento, Promocao } from '../../core/types/types';
+import { DepoimentosService } from '../../core/services/depoimentos.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,16 @@ import { Promocao } from '../../core/types/types';
 export class HomeComponent implements OnInit{
   
   promocoes!: Promocao[]
+  depoimentos!: Depoimento[]
 
-  constructor(private servicePromo: PromocaoService){}
+  constructor(private servicePromo: PromocaoService, private serviceDepo: DepoimentosService){}
   
   ngOnInit(): void {
     this.servicePromo.listar().subscribe(promos => {
       this.promocoes = promos;
+    })
+    this.serviceDepo.listar().subscribe(depos => {
+      this.depoimentos = depos;
     })
   }
 }

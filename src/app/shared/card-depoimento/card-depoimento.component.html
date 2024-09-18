@@ -1,9 +1,9 @@
 <mat-card class="depoimento">
     <mat-card-content>
-        <img mat-card-sm-image src="../../../assets/images/avatar3.png" >
+        <img mat-card-sm-image src="{{depoimento.avatar}}" >
         <ul>
-            <li>{{ depoimento }}</li>
-            <li><strong>{{ autoria }}</strong></li>
+            <li>{{ depoimento.texto }}</li>
+            <li><strong>{{ depoimento.autor }}</strong></li>
         </ul>
     </mat-card-content>
 </mat-card>
