@@ -8,12 +8,12 @@
             </mat-button-toggle-group>
             <mat-chip (click)="serviceForm.openDialog()">
                 <div class="inner">
-                  <mat-icon>check</mat-icon> 1 adulto
+                  <mat-icon>check</mat-icon> {{serviceForm.descricaoPassageiros()}}
                 </div>
               </mat-chip>
             <mat-chip (click)="serviceForm.openDialog()">
                 <div class="inner">
-                  <mat-icon>check</mat-icon> Econômica
+                  <mat-icon>check</mat-icon> {{serviceForm.formulario.get('tipo')?.value}}
                 </div>
             </mat-chip>
         </div>
