@@ -8,8 +8,8 @@
     ngDefaultControl
   />
   <mat-icon matSuffix>search</mat-icon>
-  <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
-      <mat-option *ngFor="let estado of filteredOptions$ | async" [value]="estado.nome">
+  <mat-autocomplete [displayWith]="displayFn" #auto="matAutocomplete" autoActiveFirstOption>
+      <mat-option *ngFor="let estado of filteredOptions$ | async" [value]="estado">
         {{estado.nome}}
       </mat-option>
   </mat-autocomplete>
