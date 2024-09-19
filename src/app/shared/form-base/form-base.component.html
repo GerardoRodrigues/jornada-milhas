@@ -1,9 +1,9 @@
 <app-container>
   <mat-card>
     <form [formGroup]="cadastroForm">
-      <mat-card-title>Criar sua conta</mat-card-title>
+      <mat-card-title>Crie sua conta</mat-card-title>
       <section>
-        <div class="acoesPerfil">
+        <div class="acoesPerfil" *ngIf="perfilComponent">
           <h2>Dados pessoais</h2>
           <button mat-stroked-button color="primary">
             <mat-icon>logout</mat-icon>
@@ -94,7 +94,6 @@
               <app-dropdown-uf
                 label="Estado"
                 placeholder="Estado"
-                formControlName="estado"
                 [control]="estadoControl"
               ></app-dropdown-uf>
               <mat-error
@@ -106,8 +105,8 @@
           </div>
         </div>
       </mat-card-content>
-      <mat-divider></mat-divider>
-      <div class="acessoPerfil">
+      <mat-divider *ngIf="perfilComponent"></mat-divider>
+      <div class="acessoPerfil" *ngIf="perfilComponent">
         <h2>Dados de acesso</h2>
       </div>
       <mat-card-content>
@@ -188,9 +187,10 @@
           class="full-width"
           >Li e aceito os termos e condições deste cadastro *</mat-checkbox
         >
+        <mat-error *ngIf="cadastroForm.get('aceitarTermos')?.invalid && cadastroForm.get('aceitarTermos')?.dirty">O termo deve ser aceito</mat-error>
       </mat-card-content>
       <mat-card-actions class="full-width">
-        <button mat-flat-button color="primary">CADASTRAR</button>
+        <button mat-flat-button color="primary" [disabled]="cadastroForm.invalid" (click)="executarAcao()">CADASTRAR</button>
       </mat-card-actions>
     </form>
   </mat-card>

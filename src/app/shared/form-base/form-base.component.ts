@@ -11,6 +11,9 @@ export class FormBaseComponent implements OnInit{
   cadastroForm!: FormGroup;
   estadoControl = new FormControl<UnidadeFederativaService | null>(null, Validators.required);
 
+  @Input() perfilComponent!: boolean;
+  @Output() acaoClique: EventEmitter<any> = new EventEmitter<any>
+
   constructor(private formBuilder: FormBuilder){}
 
   ngOnInit(): void {
@@ -28,5 +31,9 @@ export class FormBaseComponent implements OnInit{
         confirmarSenha: [null, [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\d).{5,}$')]],
         aceitarTermos: [null, [Validators.requiredTrue]]
       })
+  }
+
+  executarAcao(){
+    this.acaoClique.emit();
   }
 }
