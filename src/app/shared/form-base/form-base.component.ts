@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UnidadeFederativaService } from '../../core/services/unidade-federativa.service';
 import { FormularioService } from '../../core/services/formulario.service';
+import { FormValidation } from '../form-validation';
 
 @Component({
   selector: 'app-form-base',
@@ -28,8 +29,8 @@ export class FormBaseComponent implements OnInit{
         genero: ['outro'],
         telefone: [null, [Validators.required]],
         estado: this.estadoControl,
-        confirmarEmail: [null, [Validators.required, Validators.email]],
-        confirmarSenha: [null, [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\d).{5,}$')]],
+        confirmarEmail: [null, [Validators.required, Validators.email, FormValidation.equalTo('email')]],
+        confirmarSenha: [null, [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\d).{5,}$'), FormValidation.equalTo('senha')]],
         aceitarTermos: [null, [Validators.requiredTrue]]
       })
 

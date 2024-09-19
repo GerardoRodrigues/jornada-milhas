@@ -160,6 +160,7 @@
                 *ngIf="cadastroForm.get('confirmarEmail')?.errors?.['email']"
                 >Email inválido</mat-error
               >
+              <mat-error *ngIf="cadastroForm.get('confirmarEmail')?.errors?.['equalTo']">Emails não coincidem</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Confirmar Senha</mat-label>
@@ -178,6 +179,7 @@
                 >A senha deve conter no mínimo 5 caracteres com pelo menos uma
                 letra maiuscula e um numero</mat-error
               >
+              <mat-error *ngIf="cadastroForm.get('confirmarSenha')?.errors?.['equalTo']">Senhas não coincidem</mat-error>
             </mat-form-field>
           </div>
         </div>
