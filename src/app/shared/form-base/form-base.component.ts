@@ -14,7 +14,10 @@ export class FormBaseComponent implements OnInit{
   estadoControl = new FormControl<UnidadeFederativaService | null>(null, Validators.required);
 
   @Input() perfilComponent!: boolean;
+  @Input() titulo: string = 'Crie sua conta'
+  @Input() tituloBotao: string = 'CADASTRAR'
   @Output() acaoClique: EventEmitter<any> = new EventEmitter<any>()
+  @Output() deslogarClique: EventEmitter<any> = new EventEmitter<any>()
 
   constructor(private formBuilder: FormBuilder, private formService: FormularioService){}
 
@@ -25,19 +28,31 @@ export class FormBaseComponent implements OnInit{
         cpf: [null, [Validators.required]],
         cidade: [null, [Validators.required]],
         email: [null, [Validators.required, Validators.email]],
-        senha: [null, [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\d).{5,}$')]],
+        senha: [null, [Validators.required, Validators.minLength(4)]],
         genero: ['outro'],
         telefone: [null, [Validators.required]],
         estado: this.estadoControl,
         confirmarEmail: [null, [Validators.required, Validators.email, FormValidation.equalTo('email')]],
-        confirmarSenha: [null, [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\d).{5,}$'), FormValidation.equalTo('senha')]],
+        confirmarSenha: [null, [Validators.required, Validators.minLength(4), FormValidation.equalTo('senha')]],
         aceitarTermos: [null, [Validators.requiredTrue]]
       })
+
+      if(this.perfilComponent){
+        this.cadastroForm.get('aceitarTermos')?.setValidators(null);
+      }else{
+        this.cadastroForm.get('aceitarTermos')?.setValidators([Validators.requiredTrue]);
+      }
+
+      this.cadastroForm.get('aceitarTermos')?.updateValueAndValidity();
 
       this.formService.setCadastro(this.cadastroForm);
   }
 
   executarAcao(){
     this.acaoClique.emit();
+  }
+
+  deslogar(){
+    this.deslogarClique.emit();
   }
 }

@@ -1,11 +1,11 @@
 <app-container>
   <mat-card>
     <form [formGroup]="cadastroForm">
-      <mat-card-title>Crie sua conta</mat-card-title>
+      <mat-card-title>{{titulo}}</mat-card-title>
       <section>
         <div class="acoesPerfil" *ngIf="perfilComponent">
           <h2>Dados pessoais</h2>
-          <button mat-stroked-button color="primary">
+          <button mat-stroked-button color="primary" (click)="deslogar()">
             <mat-icon>logout</mat-icon>
             DESLOGAR
           </button>
@@ -138,9 +138,8 @@
               <mat-error *ngIf="cadastroForm.get('senha')?.errors?.['required']"
                 >Senha é obrigatória</mat-error
               >
-              <mat-error *ngIf="cadastroForm.get('senha')?.errors?.['pattern']"
-                >A senha deve conter no mínimo 5 caracteres com pelo menos uma
-                letra maiuscula e um numero</mat-error
+              <mat-error *ngIf="cadastroForm.get('senha')?.errors?.['minlength']"
+                >A senha deve conter no mínimo 4 caracteres</mat-error
               >
             </mat-form-field>
           </div>
@@ -175,9 +174,8 @@
                 >Senha é obrigatória</mat-error
               >
               <mat-error
-                *ngIf="cadastroForm.get('confirmarSenha')?.errors?.['pattern']"
-                >A senha deve conter no mínimo 5 caracteres com pelo menos uma
-                letra maiuscula e um numero</mat-error
+                *ngIf="cadastroForm.get('confirmarSenha')?.errors?.['minlength']"
+                >A senha deve conter no mínimo 4 caracteres</mat-error
               >
               <mat-error *ngIf="cadastroForm.get('confirmarSenha')?.errors?.['equalTo']">Senhas não coincidem</mat-error>
             </mat-form-field>
@@ -187,12 +185,13 @@
           formControlName="aceitarTermos"
           color="primary"
           class="full-width"
+          *ngIf="!perfilComponent"
           >Li e aceito os termos e condições deste cadastro *</mat-checkbox
         >
         <mat-error *ngIf="cadastroForm.get('aceitarTermos')?.invalid && cadastroForm.get('aceitarTermos')?.dirty">O termo deve ser aceito</mat-error>
       </mat-card-content>
       <mat-card-actions class="full-width">
-        <button mat-flat-button color="primary" [disabled]="cadastroForm.invalid" (click)="executarAcao()">CADASTRAR</button>
+        <button mat-flat-button color="primary" [disabled]="cadastroForm.invalid" (click)="executarAcao()" [class.perfil-button]="perfilComponent">{{tituloBotao}}</button>
       </mat-card-actions>
     </form>
   </mat-card>
