@@ -39,4 +39,8 @@ export class BuscaComponent implements OnInit{
       console.log(this.passagens)
     });
   }
+
+  busca(ev: any){
+
+  }
 }
