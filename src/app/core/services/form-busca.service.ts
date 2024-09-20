@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from '../../shared/modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatChipSelectionChange } from '@angular/material/chips';
@@ -13,15 +13,32 @@ export class FormBuscaService {
   formulario: FormGroup;
 
   constructor() {
+    const somenteIda = new FormControl(false, [Validators.required])
+    const dataVolta = new FormControl(null, [Validators.required])
+
     this.formulario = new FormGroup({
-      somenteIda: new FormControl(false),
-      origem: new FormControl(null),
-      destino: new FormControl(null),
+      somenteIda,
+      origem: new FormControl(null, [Validators.required]),
+      destino: new FormControl(null, [Validators.required]),
       tipo: new FormControl('Econômica'),
       adultos: new FormControl(1),
       criancas: new FormControl(0),
-      bebes: new FormControl(0)
+      bebes: new FormControl(0),
+      dataIda: new FormControl(null, [Validators.required]),
+      dataVolta
     })
+
+    somenteIda.valueChanges.subscribe(somenteIda => {
+      if(somenteIda){
+        dataVolta.disable();
+        dataVolta.setValidators(null);
+      }else{
+        dataVolta.enable();
+        dataVolta.setValidators([Validators.required])
+      }
+      dataVolta.updateValueAndValidity();
+    })
+
    }
 
    descricaoPassageiros(): string{
@@ -69,5 +86,9 @@ export class FormBuscaService {
 
   openDialog() {
     this.dialog.open(ModalComponent);
+  }
+
+  get formValido(){
+    return this.formulario.valid;
   }
 }
