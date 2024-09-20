@@ -13,6 +13,14 @@
         background-color: black;
         padding: 10px 256px;
     }
+
+    .links-toolbar > * {
+        margin-right: 20px;
+    }
+    
+    .links-toolbar > *:first-child {
+        margin-right: 0;
+    }
     
     .mat-mdc-outlined-button{
         border-width: 1px;
