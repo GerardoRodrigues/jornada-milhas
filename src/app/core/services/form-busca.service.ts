@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from '../../shared/modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatChipSelectionChange } from '@angular/material/chips';
+import { DadosBusca } from '../types/types';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class FormBuscaService {
 
   constructor() {
     const somenteIda = new FormControl(false, [Validators.required])
-    const dataVolta = new FormControl(null, [Validators.required])
+    const dataVolta = new FormControl(null, [Validators.required]) 
 
     this.formulario = new FormGroup({
       somenteIda,
@@ -68,12 +69,36 @@ export class FormBuscaService {
     return descricao
    }
 
-   obterControle(nome:string): FormControl {
+   obterControle<T>(nome:string): FormControl {
     const control = this.formulario.get(nome);
     if (!control) {
       throw new Error(`FormControl com nome "${nome}" não existe.`);
     }
-    return control as FormControl;
+    return control as FormControl<T>;
+  }
+
+  obterDados(): DadosBusca{
+    const dataIdaControl = this.obterControle<Date>('dataIda').value;
+
+    const dadosBusca : DadosBusca = {
+      pagina: 1,
+      porPagina: 50,
+      somenteIda: this.obterControle<boolean>('somenteIda').value,
+      origemId: this.obterControle<number>('origem').value.id,
+      destinoId: this.obterControle<number>('destino').value.id,
+      tipo: this.obterControle<string>('tipo').value,
+      passageirosAdultos: this.obterControle<number>('adultos').value,
+      passageirosCriancas: this.obterControle<number>('criancas').value,
+      passageirosBebes: this.obterControle<number>('bebes').value,
+      dataIda: dataIdaControl.value.toISOString()
+    }
+
+    const dataVoltaControl = this.obterControle<Date>('dataVolta').value;
+    if(dataVoltaControl.value){
+      dadosBusca.dataVolta = dataVoltaControl.value.toISOString();
+    }
+
+    return dadosBusca;
   }
 
   alterarTipo(event: MatChipSelectionChange, tipo: string){
