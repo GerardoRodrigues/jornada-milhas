@@ -40,6 +40,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { AutenticacaoInterceptor } from './core/interceptors/autenticao.interceptor';
+import { BuscaComponent } from './pages/busca/busca.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AutenticacaoInterceptor } from './core/interceptors/autenticao.intercep
     LoginComponent,
     FormBaseComponent,
     CadastroComponent,
-    PerfilComponent
+    PerfilComponent,
+    BuscaComponent
   ],
   imports: [
     BrowserModule,
