@@ -3,7 +3,7 @@
         <img src="" alt="">
     </app-banner>
     <app-container>
-        <app-form-busca></app-form-busca>
+        <app-form-busca (realizarBusca)="realizarBusca($event)"></app-form-busca>
         <section class="conteudo">
             <div class="passagens">
                 <app-passagem *ngFor="let passagem of passagens" [passagem]="passagem"></app-passagem>

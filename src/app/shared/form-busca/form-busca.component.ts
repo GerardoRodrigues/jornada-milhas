@@ -13,7 +13,7 @@ export class FormBuscaComponent {
 
   buscar(){
     if(this.serviceForm.formValido){
-      const formValue = this.serviceForm.formulario.value;
+      const formValue = this.serviceForm.obterDados();
       this.realizarBusca.emit(formValue);
     }else{
       alert('Preencha os campos para buscar');

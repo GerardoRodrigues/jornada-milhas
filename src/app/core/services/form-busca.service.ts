@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from '../../shared/modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatChipSelectionChange } from '@angular/material/chips';
-import { DadosBusca } from '../types/types';
+import { DadosBusca, UnidadeFederativa } from '../types/types';
 
 @Injectable({
   providedIn: 'root'
@@ -78,23 +78,23 @@ export class FormBuscaService {
   }
 
   obterDados(): DadosBusca{
-    const dataIdaControl = this.obterControle<Date>('dataIda').value;
+    const dataIdaControl = this.obterControle<Date>('dataIda');
 
-    const dadosBusca : DadosBusca = {
+    const dadosBusca: DadosBusca = {
       pagina: 1,
       porPagina: 50,
-      somenteIda: this.obterControle<boolean>('somenteIda').value,
-      origemId: this.obterControle<number>('origem').value.id,
-      destinoId: this.obterControle<number>('destino').value.id,
-      tipo: this.obterControle<string>('tipo').value,
+      dataIda: dataIdaControl.value.toISOString(),
       passageirosAdultos: this.obterControle<number>('adultos').value,
       passageirosCriancas: this.obterControle<number>('criancas').value,
       passageirosBebes: this.obterControle<number>('bebes').value,
-      dataIda: dataIdaControl.value.toISOString()
-    }
+      somenteIda: this.obterControle<boolean>('somenteIda').value,
+      origemId: this.obterControle<UnidadeFederativa>('origem').value.id,
+      destinoId: this.obterControle<UnidadeFederativa>('destino').value.id,
+      tipo: this.obterControle<string>('tipo').value,
+    };
 
-    const dataVoltaControl = this.obterControle<Date>('dataVolta').value;
-    if(dataVoltaControl.value){
+    const dataVoltaControl = this.obterControle<Date>('dataVolta');
+    if (dataVoltaControl.value) {
       dadosBusca.dataVolta = dataVoltaControl.value.toISOString();
     }
 
