@@ -5,7 +5,9 @@
     <app-container>
         <app-form-busca></app-form-busca>
         <section class="conteudo">
-            
+            <div class="passagens">
+                <app-passagem *ngFor="let passagem of passagens" [passagem]="passagem"></app-passagem>
+            </div>
         </section>
     </app-container>
 </div>
