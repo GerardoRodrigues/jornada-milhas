@@ -16,8 +16,8 @@ export class BuscaComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      const buscaPadrao = {
-        data: new Date().toISOString,
+      const buscaPadrao : DadosBusca= {
+        dataIda: new Date().toISOString(),
         pagina: 1,
         porPagina: 25,
         somenteIda: false,
@@ -40,7 +40,10 @@ export class BuscaComponent implements OnInit{
     });
   }
 
-  busca(ev: any){
-
+  busca(ev: DadosBusca){
+    this.servicePassagem.getPassagens(ev).subscribe(resultado => {
+      this.passagens = resultado.resultado
+      console.log(this.passagens)
+    });
   }
 }
