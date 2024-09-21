@@ -10,8 +10,8 @@
         <p>{{ servicePassagem.precoMax | currency:'BRL' }}</p>
       </div>
     </div>
-    <mat-slider [min]="servicePassagem.precoMin" [max]="servicePassagem.precoMax">
-      <input id="preco-minimo" matSliderStartThumb>
-      <input id="preco-maximo" matSliderEndThumb>
+    <mat-slider [min]="servicePassagem.precoMin" [max]="precoMax">
+      <input id="preco-minimo" matSliderStartThumb [formControl]="precoMin">
+      <input id="preco-maximo" matSliderEndThumb [formControl]="precoMax">
     </mat-slider>
 </section>
