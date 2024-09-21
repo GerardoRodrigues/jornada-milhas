@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { PassagensService } from '../../../../core/services/passagens.service';
+import { FormBuscaService } from '../../../../core/services/form-busca.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-precos',
@@ -6,6 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './precos.component.css'
 })
 export class PrecosComponent {
-  precoMin?: number = 0;
-  precoMax?: number = 5000
+  precoMin: FormControl<number>
+  precoMax: FormControl<number>
+
+  constructor(protected servicePassagem: PassagensService, private serviceFormBusca: FormBuscaService){
+    this.precoMin = this.serviceFormBusca.obterControle<number>('precoMin')
+    this.precoMax = this.serviceFormBusca.obterControle<number>('precoMax')
+  }
 }
