@@ -9,6 +9,7 @@ import { PassagemComponent } from "./passagem/passagem.component";
 import { BuscaComponent } from "./busca.component";
 import { MaterialModule } from "../core/material/material.module";
 import { SharedModule } from "../shared/shared.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SharedModule } from "../shared/shared.module";
     imports:[
         CommonModule,
         MaterialModule,
-        SharedModule
+        SharedModule,
+        ReactiveFormsModule
     ],
     exports:[
         BuscaComponent,
