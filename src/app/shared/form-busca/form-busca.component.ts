@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import { FormBuscaService } from '../../core/services/form-busca.service';
+import { FormBuscaService } from '../../busca/services/form-busca.service';
 
 @Component({
   selector: 'app-form-busca',
