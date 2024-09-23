@@ -11,8 +11,9 @@ import { AutenticacaoInterceptor } from './autenticacao/autenticao.interceptor';
 import { MaterialModule } from './core/material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
-import { AutenticacaoModule } from './autenticacao/autenticacao.module';
 import { BuscaModule } from './busca/busca.module';
+import { ErroModule } from './core/erro/erro.module';
+import { ErrosInterceptor } from './core/erro/erros.interceptor';
 
 
 @NgModule({
@@ -27,13 +28,19 @@ import { BuscaModule } from './busca/busca.module';
     MaterialModule,
     SharedModule,
     HomeModule,
-    BuscaModule
+    BuscaModule,
+    ErroModule
   ],
   providers: [
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AutenticacaoInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrosInterceptor,
       multi: true
     }
   ],

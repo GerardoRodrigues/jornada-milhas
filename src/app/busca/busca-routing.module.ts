@@ -4,7 +4,7 @@ import { BuscaComponent } from "./busca.component";
 
 const routes: Routes = [
     {
-        path: 'busca',
+        path: '',
         component: BuscaComponent
     }
 ]

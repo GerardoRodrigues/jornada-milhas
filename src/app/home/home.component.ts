@@ -26,6 +26,6 @@ export class HomeComponent implements OnInit{
   }
 
   navegarParaBusca(ev: any){
-    this.router.navigateByUrl('auth/busca')
+    this.router.navigateByUrl('/busca')
   }
 }
