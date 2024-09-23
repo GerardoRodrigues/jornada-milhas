@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './autenticacao/login/login.component';
 import { CadastroComponent } from './autenticacao/cadastro/cadastro.component';
 import { PerfilComponent } from './autenticacao/perfil/perfil.component';
@@ -10,7 +9,8 @@ import { BuscaComponent } from './busca/busca.component';
 const routes: Routes = [
   {
     path:'',
-    component: HomeComponent
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
   {
     path: 'login',
