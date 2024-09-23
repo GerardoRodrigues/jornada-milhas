@@ -10,6 +10,7 @@ import { BuscaComponent } from "./busca.component";
 import { MaterialModule } from "../core/material/material.module";
 import { SharedModule } from "../shared/shared.module";
 import { ReactiveFormsModule } from "@angular/forms";
+import { BuscaRoutingModule } from "./busca-routing.module";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ReactiveFormsModule } from "@angular/forms";
         CommonModule,
         MaterialModule,
         SharedModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BuscaRoutingModule
     ],
     exports:[
         BuscaComponent,

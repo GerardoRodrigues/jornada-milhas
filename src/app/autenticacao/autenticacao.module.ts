@@ -6,6 +6,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { MaterialModule } from '../core/material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AutenticacaoRoutingModule } from './autenticacao-routing.module';
 
 
 
@@ -17,9 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    MaterialModule,
     SharedModule,
-    ReactiveFormsModule
+    MaterialModule,
+    ReactiveFormsModule,
+    AutenticacaoRoutingModule
   ],
   exports:[
     CadastroComponent,
