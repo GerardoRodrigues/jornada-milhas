@@ -1,11 +1,12 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { MensagemService } from '../services/mensagem.service';
 
 @Injectable()
 export class ErrosInterceptor implements HttpInterceptor{
 
-  constructor(){}
+  constructor(private serviceMensagem: MensagemService){}
 
   intercept(req: HttpRequest<HttpErrorResponse>, next: HttpHandler): Observable<HttpEvent<HttpErrorResponse>> {
 
@@ -23,6 +24,8 @@ export class ErrosInterceptor implements HttpInterceptor{
         }else if(erro.status === 401){
           errorMessage = 'Você não tem autorização para acessar esse recurso'
         }
+
+        this.serviceMensagem.openSnackBar(errorMessage);
 
         return throwError(() => new Error('Ocorreu um erro!'));
       })
