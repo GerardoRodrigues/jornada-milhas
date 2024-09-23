@@ -18,19 +18,20 @@ export class SeletorPassageiroComponent implements ControlValueAccessor{
   @Input() descricaoIdade: string = '';
 
   value: number = 0;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange = (value: number) => {}
   onTouch = () => {}
 
-  writeValue(value: any): void {
+  writeValue(value: number): void {
     this.value = value;
   }
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (val: number) => void): void {
     this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouch = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
+  setDisabledState?(): void {
   }
 
   decrementar(){

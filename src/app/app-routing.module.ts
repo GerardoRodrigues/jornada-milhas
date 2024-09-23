@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { PaginaNaoEncontradaComponent } from './core/erro/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { HomeModule } from './home/home.module';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    component: HomeComponent
   },
   {
     path: 'auth',
@@ -28,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), HomeModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

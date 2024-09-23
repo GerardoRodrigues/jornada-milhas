@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { TestBed } from '@angular/core/testing';
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 
