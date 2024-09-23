@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { SharedModule } from '../../shared/shared.module';
-import { ErroRoutingModule } from './erro-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,8 +12,7 @@ import { ErroRoutingModule } from './erro-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule,
-    ErroRoutingModule
+    RouterModule
   ]
 })
 export class ErroModule { }
